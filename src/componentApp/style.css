@@ -1,0 +1,194 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: #f3f4f6;
+  color: #1f2937;
+}
+
+.app {
+  max-width: 1100px;
+  margin: 24px auto;
+  padding: 16px;
+  background: #f8f9fb;
+  border-radius: 8px;
+}
+
+/* ---------- Barre du haut ---------- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.topbar h1 { margin: 0; font-size: 20px; color: #1e293b; }
+.topbar-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+
+.filter { display: flex; gap: 8px; }
+input, select, textarea {
+  font: inherit;
+  font-size: 13px;
+  padding: 8px 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+  color: #1f2937;
+}
+input:focus, select:focus, textarea:focus {
+  outline: 2px solid #93b4fb;
+  outline-offset: 0;
+}
+
+/* ---------- Boutons ---------- */
+.btn {
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 12px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.btn-primary { background: linear-gradient(135deg, #4f86f7, #6d9bfa); color: #fff; }
+.btn-primary:hover { filter: brightness(.95); }
+.btn-outline { background: #fff; border-color: #e5e7eb; color: #374151; }
+.btn-outline:hover:not(:disabled) { background: #f3f4f6; }
+.btn-block { width: 100%; }
+.btn-gris  { background: #f1f2f4; color: #111827; }
+.btn-bleu  { background: #e8ecfd; color: #3730a3; }
+.btn-rouge { background: #fde4e4; color: #b91c1c; }
+
+/* ---------- Mise en page ---------- */
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 16px;
+  align-items: start;
+}
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 14px;
+}
+.vide { color: #6b7280; text-align: center; padding: 40px 0; }
+
+/* ---------- Carte recette ---------- */
+.card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .06);
+  display: flex;
+  flex-direction: column;
+}
+.card-img {
+  height: 170px;
+  background: #f1f2f4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-img img { height: 100%; max-width: 100%; object-fit: contain; }
+.card-img-vide { font-size: 40px; opacity: .4; }
+
+.card-body { padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+.card-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.card-head h2 { margin: 0; font-size: 15px; color: #1e293b; }
+.badge {
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 8px;
+  background: #e8f0fe;
+  color: #4a76d6;
+  white-space: nowrap;
+}
+.desc { margin: 0; font-size: 12px; color: #6b7280; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  font-size: 11px;
+  padding: 4px 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  background: #fafafa;
+  color: #6b7280;
+}
+
+.difficulte { margin: 0; font-size: 13px; }
+.date { margin: -4px 0 0; font-size: 10px; color: #6b7280; }
+.card-actions { display: flex; gap: 6px; margin-top: 4px; }
+.info { margin: 0; font-size: 12px; color: #15803d; }
+
+/* ---------- Aide ---------- */
+.aide {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .06);
+}
+.aide-head { display: flex; justify-content: space-between; align-items: center; }
+.aide h3 { margin: 0; font-size: 14px; }
+.version { font-size: 11px; background: #f1f2f4; padding: 3px 8px; border-radius: 6px; color: #374151; }
+.aide ul { margin: 10px 0 0; padding-left: 16px; font-size: 12px; color: #6b7280; }
+.aide li { margin-bottom: 8px; }
+.aide strong { color: #374151; }
+
+/* ---------- Pagination ---------- */
+.pagination { display: flex; justify-content: center; gap: 6px; margin-top: 16px; }
+.pagination button {
+  min-width: 28px;
+  height: 28px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 12px;
+  cursor: pointer;
+}
+.pagination button.active { background: #4f86f7; border-color: #4f86f7; color: #fff; }
+.pagination button:disabled { opacity: .4; cursor: not-allowed; }
+
+/* ---------- Modale ---------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 100;
+}
+.modal {
+  width: 100%;
+  max-width: 440px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.modal-head { display: flex; justify-content: space-between; align-items: center; }
+.modal-head h2 { margin: 0; font-size: 17px; color: #1e293b; }
+.modal label { font-size: 12px; color: #6b7280; margin-top: 8px; }
+.modal input[type="text"], .modal input:not([type]), .modal select, .modal textarea { width: 100%; }
+.modal input[type="range"] { width: 100%; padding: 0; accent-color: #4f86f7; }
+.valeur { color: #f97316; font-weight: 700; }
+.ingredient-row { display: flex; gap: 8px; }
+.ingredient-row input { flex: 1; }
+.apercu { max-height: 120px; object-fit: contain; border-radius: 8px; background: #f1f2f4; }
+.modal-actions { display: flex; gap: 8px; margin-top: 12px; }
+.modal-actions .btn { flex: 1; padding: 11px; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 800px) {
+  .layout { grid-template-columns: 1fr; }
+}
